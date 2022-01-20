@@ -1,5 +1,6 @@
 from network import NetworkServerTCP
 from domain import from_json
+from configparser import ConfigParser
 
 def transmission_complete(byte_string):
     # create book 
@@ -8,4 +9,9 @@ def transmission_complete(byte_string):
 
 
 if __name__ == '__main__':
-    srv = NetworkServerTCP('', 20_001, transmission_complete)
+    cfg = ConfigParser()
+    cfg.read('config.ini')
+    port = cfg.getint('server', 'port')
+    ip = cfg.get('server', 'ip')
+
+    srv = NetworkServerTCP(ip, port, transmission_complete)
