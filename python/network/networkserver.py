@@ -10,4 +10,5 @@ class NetworkServerTCP:
     """
     def __init__(self, ip, port, callback):
         self.serv = TCPServer((ip, port), handler_factory(callback))
+        print(f"Listening on {ip}:{port}")
         self.serv.serve_forever()
