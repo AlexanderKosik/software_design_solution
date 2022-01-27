@@ -1,11 +1,19 @@
 from network import NetworkServerTCP
 from domain import from_json
 from configparser import ConfigParser
+from database import Database
+
+db = Database()
 
 def transmission_complete(byte_string):
     # create book 
     book = from_json(byte_string)
+    book.json = byte_string
+
+    # log receiving of book
     print(book)
+
+    db.store(book)
 
 
 if __name__ == '__main__':
