@@ -4,6 +4,7 @@ from .db_book import Book
 
 class Database:
     def __init__(self):
+        # self.engine = create_engine("sqlite:///rcp.db", echo=True)
         self.engine = create_engine("sqlite://", echo=True)
         self.Session = sessionmaker(bind=self.engine)
 
