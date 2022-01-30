@@ -1,8 +1,9 @@
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import Session, sessionmaker
 from .db_book import Book
+from .database_ifc import DBIfc
 
-class Database:
+class SQLDatabase(DBIfc):
     def __init__(self):
         # self.engine = create_engine("sqlite:///rcp.db", echo=True)
         self.engine = create_engine("sqlite://", echo=True)
