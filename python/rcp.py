@@ -2,11 +2,11 @@ from network import NetworkServerTCP
 from domain import from_json
 from configparser import ConfigParser
 
-# from database import SQLDatabase
-#db = SQLDatabase()
+from database import SQLDatabase
+db = SQLDatabase()
 
-from database import MongoDatabase
-db = MongoDatabase()
+# from database import MongoDatabase
+# db = MongoDatabase()
 
 def transmission_complete(byte_string):
     # create book 

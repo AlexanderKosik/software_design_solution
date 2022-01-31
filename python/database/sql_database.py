@@ -5,8 +5,8 @@ from .database_ifc import DBIfc
 
 class SQLDatabase(DBIfc):
     def __init__(self):
-        # self.engine = create_engine("sqlite:///rcp.db", echo=True)
-        self.engine = create_engine("sqlite://", echo=True)
+        self.engine = create_engine("sqlite:///rcp.db", echo=True)
+        # self.engine = create_engine("sqlite://", echo=True)
         self.Session = sessionmaker(bind=self.engine)
 
         # create tables 
@@ -19,3 +19,11 @@ class SQLDatabase(DBIfc):
         db_book.content = book.json
         session.add(db_book)
         session.commit()
+
+    def all_books(self):
+        """
+        Returns a list of all available books
+        """
+        session = self.Session()
+        books = session.query(Book).all()
+        return [book for book in books]
