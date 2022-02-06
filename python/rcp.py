@@ -1,6 +1,6 @@
 from network import NetworkServerTCP
-from domain import from_json
 from configparser import ConfigParser
+from domain import Book
 
 from database import SQLDatabase
 db = SQLDatabase()
@@ -10,8 +10,7 @@ db = SQLDatabase()
 
 def transmission_complete(byte_string):
     # create book 
-    book = from_json(byte_string)
-    book.json = byte_string
+    book = Book.from_json(byte_string)
 
     # log receiving of book
     print(book)

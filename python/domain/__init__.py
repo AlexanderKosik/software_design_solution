@@ -1,1 +1,1 @@
-from .converter import from_json
+from .book import Book
