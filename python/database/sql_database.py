@@ -20,10 +20,19 @@ class SQLDatabase(DBIfc):
         session.add(db_book)
         session.commit()
 
-    def all_books(self):
+    def all_books(self, limit):
         """
         Returns a list of all available books
         """
         session = self.Session()
-        books = session.query(Book).all()
+        books = session.query(Book).limit(limit)
         return [book for book in books]
+
+    def all_books_filtered_by(self, **kwargs):
+        """
+        Returns a list of books filtered by given criteria
+        """
+        session = self.Session()
+        books = session.query(Book).filter_by(**kwargs)
+        return [book for book in books]
+
