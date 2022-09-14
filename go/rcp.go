@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"meta/meta"
 	"net"
 	"os"
 )
@@ -47,6 +48,8 @@ func handleRequest(conn net.Conn) {
 	json_content := string(buf)
 
 	fmt.Println(json_content)
+	meta.DecodeBook(buf)
+
 	// Close the connection when you're done with it.
 	conn.Close()
 }
